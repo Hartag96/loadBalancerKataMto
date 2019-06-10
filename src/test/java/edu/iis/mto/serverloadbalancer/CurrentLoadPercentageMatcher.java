@@ -16,6 +16,11 @@ public class CurrentLoadPercentageMatcher extends TypeSafeMatcher<Server> {
     }
 
     @Override
+    protected void describeMismatchSafely(Server item, Description description){
+        description.appendText("server should contain the vm").appendValue(item.currentLoadPercentage);
+    }
+
+    @Override
     protected boolean matchesSafely(Server server){
         return doublesAreEqual(expectedLoadPercentage, server.currentLoadPercentage);
     }
