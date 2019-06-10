@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static edu.iis.mto.serverloadbalancer.CurrentLoadPercentageMatcher.hasCurrentLoadOf;
 import static edu.iis.mto.serverloadbalancer.ServerBuilder.*;
+import static edu.iis.mto.serverloadbalancer.VmBuilder.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -37,14 +38,6 @@ public class ServerLoadBalancerTest {
 		return vms;
 	}
 
-	private Vm a(VmBuilder builder) {
-		return builder.build();
-	}
-
-	private VmBuilder vm() {
-		return new VmBuilder();
-	}
-
 	private void balance(Server[] servers, Vm[] vms) {
 		new ServerLoadBalancer().balance(servers, vms);
 	}
@@ -57,9 +50,10 @@ public class ServerLoadBalancerTest {
 		return servers;
 	}
 
-	private Server a(ServerBuilder builder) {
-		return  builder.build();
+	private <T> T a(Builder<T> builder){
+		return builder.build();
 	}
+
 
 
 }
