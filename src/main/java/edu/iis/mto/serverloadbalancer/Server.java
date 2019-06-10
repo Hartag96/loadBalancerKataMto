@@ -16,7 +16,7 @@ public class Server {
     }
 
     public boolean contains(Vm theVm) {
-        return true;
+        return vms.contains(theVm);
     }
 
     public void addVm(Vm vm) {
@@ -26,5 +26,9 @@ public class Server {
 
     public int countVms() {
         return vms.size();
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 }
